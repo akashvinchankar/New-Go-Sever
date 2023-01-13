@@ -40,6 +40,12 @@ func homePage(w http.ResponseWriter, r *http.Request) {
 func getOrders(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Endpoint Hit: getOrders")
 
+	// Add headers to the response
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+	w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE")
+	w.Header().Set("Access-Control-Allow-Credentials", "true")
+
 	// Get the "id" parameter from the request
 	params := r.URL.Query()
 	id := params.Get("id")
@@ -157,6 +163,10 @@ func main() {
 	Orders = []Order{
 		Order{Id: "Order1", Name: "Order Name 1"},
 		Order{Id: "Order2", Name: "Order Name 2"},
+		Order{Id: "Order3", Name: "Order Name 3"},
+		Order{Id: "Order4", Name: "Order Name 4"},
+		Order{Id: "Order5", Name: "Order Name 5"},
+		Order{Id: "Order6", Name: "Order Name 6"},
 	}
 
 	Schedules = []Schedule{
