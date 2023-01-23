@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"strconv"
+	"time"
 )
 
 type Order struct {
@@ -63,6 +64,8 @@ func getOrders(w http.ResponseWriter, r *http.Request) {
 				break
 			}
 		}
+// Add delay of 2 seconds before returning the filtered order
+		time.Sleep(7 * time.Second)
 
 		// Return the filtered order
 		json.NewEncoder(w).Encode(order)
@@ -183,7 +186,7 @@ func main() {
 		Show{Id: 1, Name: "Morning"},
 		Show{Id: 2, Name: "Afternoon"},
 		Show{Id: 3, Name: "Evening"},
-		Show{Id: 3, Name: "Night"},
+		Show{Id: 4, Name: "Night"},
 	}
 
 	handleRequests()
