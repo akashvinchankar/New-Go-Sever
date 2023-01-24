@@ -65,7 +65,7 @@ func getOrders(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 // Add delay of 2 seconds before returning the filtered order
-		time.Sleep(7 * time.Second)
+		time.Sleep(5 * time.Second)
 
 		// Return the filtered order
 		json.NewEncoder(w).Encode(order)
