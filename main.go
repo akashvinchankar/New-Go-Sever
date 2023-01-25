@@ -52,9 +52,9 @@ func getOrders(w http.ResponseWriter, r *http.Request) {
 	id := params.Get("id")
 
 	// Check if the "id" parameter is provided in the request
-	if id == "" {
-		// If not provided, return the whole list of orders
-		json.NewEncoder(w).Encode(Orders)
+	if id == " " {
+		// If not provided, return a default value
+		json.NewEncoder(w).Encode("Checking for Data")
 	} else {
 		// If provided, filter the list of orders based on the provided id
 		var order Order
@@ -64,8 +64,8 @@ func getOrders(w http.ResponseWriter, r *http.Request) {
 				break
 			}
 		}
-// Add delay of 2 seconds before returning the filtered order
-		time.Sleep(5 * time.Second)
+		// Add delay of 2 seconds before returning the filtered order
+		time.Sleep(3 * time.Second)
 
 		// Return the filtered order
 		json.NewEncoder(w).Encode(order)
