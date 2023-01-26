@@ -52,7 +52,7 @@ func getOrders(w http.ResponseWriter, r *http.Request) {
 	id := params.Get("id")
 
 	// Check if the "id" parameter is provided in the request
-	if id == " " {
+	if id == "null" {
 		// If not provided, return a default value
 		json.NewEncoder(w).Encode("Checking for Data")
 	} else {
